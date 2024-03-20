@@ -52,6 +52,7 @@ func NewPdfReader(filename string) (*PdfReader, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "Failed to open file")
 	}
+	defer f.Close()
 	info, err := f.Stat()
 	if err != nil {
 		return nil, errors.Wrap(err, "Failed to obtain file information")
